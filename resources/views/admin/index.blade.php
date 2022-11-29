@@ -49,7 +49,7 @@
 
 <script src="{{ asset('js/jquery.json-editor.min.js') }}"></script>
 
-<h2>HTML Table</h2>
+<h2>Records Table</h2>
 
 <table>
     <tr>
@@ -73,23 +73,12 @@
     let records = ('<?php echo json_encode($records); ?>');
     let editor = [];
     @foreach($records as $key=>$record)
-{{--console.log(JSON.parse(<?php echo $record?>))--}}
         editor[<?php echo $key?>] = new JsonEditor('#json-display-<?php echo $key?>',  (<?php echo $record?>));
-
     @endforeach
 
-    //var editor = new JsonEditor('#json-display', record);
     $('#translate').on('click', function () {
         editor.load(getJson());
     });
-
-    function getJson() {
-        // try {
-        //     return JSON.parse($('#json-input').val());
-        // } catch (ex) {
-        //     alert('Wrong JSON Format: ' + ex);
-        // }
-    }
 </script>
 </body>
 </html>

@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin',   [AdminController::class, 'index']);
-Route::delete('delete-json',   [AdminController::class, 'index'])->name('delete-json');
-Route::get('edit-json',   [AdminController::class, 'index'])->name('edit-json');
+Route::get('admin',   [AdminController::class, 'index'])->name('admin');
+Route::get('delete-json/{id}',   [AdminController::class, 'delete'])->name('delete-json');
+Route::get('edit-json/{id}',   [AdminController::class, 'edit'])->name('edit-json');
+Route::post('save-json/{id}',   [AdminController::class, 'update'])->name('update-json');
