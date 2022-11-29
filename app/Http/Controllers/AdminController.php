@@ -50,6 +50,6 @@ class AdminController extends Controller
 
         $record->delete();
 
-        return redirect('admin');
+        return redirect('/');
     }
 }

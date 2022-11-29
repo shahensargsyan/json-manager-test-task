@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.app')
+
+@section('content')
+
 <head>
     <style>
         table {
@@ -80,6 +82,6 @@
         editor.load(getJson());
     });
 </script>
-</body>
-</html>
-{{--https://www.jqueryscript.net/other/Beautiful-JSON-Viewer-Editor.html--}}
+
+
+@endsection

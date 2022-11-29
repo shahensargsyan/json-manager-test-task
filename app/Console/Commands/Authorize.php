@@ -50,7 +50,7 @@ class Authorize extends Command
         }
 
         config()->set('jwt.ttl', 500);
-        $token = auth()->attempt($data);
+        $token = auth()->guard('api')->attempt($data);
         if (!$token) {
             echo "Invalid Credentials";
         }

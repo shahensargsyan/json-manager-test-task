@@ -13,11 +13,15 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/',   [AdminController::class, 'index'])->name('admin');
+    Route::get('delete-json/{id}',   [AdminController::class, 'delete'])->name('delete-json');
+    Route::get('edit-json/{id}',   [AdminController::class, 'edit'])->name('edit-json');
+    Route::post('save-json/{id}',   [AdminController::class, 'update'])->name('update-json');
 });
 
-Route::get('admin',   [AdminController::class, 'index'])->name('admin');
-Route::get('delete-json/{id}',   [AdminController::class, 'delete'])->name('delete-json');
-Route::get('edit-json/{id}',   [AdminController::class, 'edit'])->name('edit-json');
-Route::post('save-json/{id}',   [AdminController::class, 'update'])->name('update-json');
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
