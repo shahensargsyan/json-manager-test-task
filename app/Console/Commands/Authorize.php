@@ -31,6 +31,9 @@ class Authorize extends Command
         $email = $this->ask('email');
         $password = $this->ask('password');
 
+        $email = 'admin@email.com';
+        $password = 'password';
+
         $data = [
             'email' => $email,
             'password' => $password
@@ -46,7 +49,7 @@ class Authorize extends Command
             die;
         }
 
-        config()->set('jwt.ttl', 5);
+        config()->set('jwt.ttl', 500);
         $token = auth()->attempt($data);
         if (!$token) {
             echo "Invalid Credentials";
